@@ -1,0 +1,19 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+        int sum=0,max=Integer.MIN_VALUE;
+        for(int i=0;i<nums.length;i++){
+            for(int j=i;j<nums.length;j++){
+                sum+=nums[j];
+                if(max<sum)
+                    max=sum;
+            }
+            sum=0;
+        }
+        return max;
+    }
+}
+
+o(n^n) method --- To overcome this we use kadane's algorithm
+
+
+------------------------------------------------------
