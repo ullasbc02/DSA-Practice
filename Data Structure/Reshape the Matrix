@@ -1,0 +1,26 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+        List<Integer> list = new ArrayList<>();
+        for(int i=0;i<mat.length;i++){
+            for(int j=0;j<mat[i].length;j++){
+                list.add(mat[i][j]);
+            }
+        }
+        
+        if(list.size()!=r*c){
+            return mat;
+        }else{
+            int[][] newmat = new int[r][c];
+            int k=0;
+            for(int i=0;i<r;i++){
+                for(int j=0;j<c;j++){
+                    if(k<list.size()){
+                        newmat[i][j]=list.get(k++);
+                    }
+                }
+            }
+            return newmat;
+        }
+        
+    }
+}
