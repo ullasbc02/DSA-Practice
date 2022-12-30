@@ -1,0 +1,38 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        if(len(s)!=len(t)):
+            return False
+        elif(sorted(s)==sorted(t)):
+            return True
+  -------------------------  ----------------------------------------------------------------------------------
+  
+  class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap<Character,Integer> for_s = new HashMap<>();
+        HashMap<Character,Integer> for_t = new HashMap<>();
+        if(s.length()!=t.length())
+            return false;
+        else{
+            
+            for(int i=0;i<s.length();i++){
+                if(for_s.containsKey(s.charAt(i))){
+                    for_s.put(s.charAt(i),for_s.get(s.charAt(i))+1);
+                }else{
+                    for_s.put(s.charAt(i),1);
+                }
+            }
+            for(int i=0;i<t.length();i++){
+                if(for_t.containsKey(t.charAt(i))){
+                    for_t.put(t.charAt(i),for_t.get(t.charAt(i))+1);
+                }else{
+                    for_t.put(t.charAt(i),1);
+                }
+            }
+        }
+        if(for_s.equals(for_t))
+            return true;
+        else
+            return false;
+    }
+}
+----------------------------------------------------------------------------------------
