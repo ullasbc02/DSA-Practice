@@ -1,0 +1,18 @@
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        Map<Integer,Integer> map = new HashMap<>();
+        ListNode curr = head;
+        ListNode prev = null;
+        while(curr!=null){
+            if(map.containsKey(curr.val)){
+                prev.next=curr.next;
+                curr=prev;
+            }else{
+                map.put(curr.val,1);
+            }
+            prev=curr;
+            curr=curr.next;
+        }
+        return head; 
+    }
+}
