@@ -1,0 +1,12 @@
+class Solution {
+    public static int HeightTree(TreeNode root){
+        if(root==null)
+            return 0;
+        return Math.max(HeightTree(root.left),HeightTree(root.right))+1;
+    }
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root==null)
+            return 0;
+        return Math.max(Math.max(diameterOfBinaryTree(root.left),diameterOfBinaryTree(root.right)),HeightTree(root.left)+HeightTree(root.right));
+    }
+}
