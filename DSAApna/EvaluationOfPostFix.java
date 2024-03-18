@@ -11,7 +11,7 @@ public class EvaluationOfPostFix {
             expression.charAt(i);
             if (Character.isDigit(expression.charAt(i))) {
                 stack.push(expression.charAt(i)-'0');
-                System.err.println(Integer.valueOf(expression.charAt(i)));
+                //System.err.println(Integer.valueOf(expression.charAt(i)));
             } else {
                 int operand1 = stack.pop();
                 int operand2 = stack.pop();
