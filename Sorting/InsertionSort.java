@@ -23,7 +23,7 @@ public class InsertionSort {
     }
 }
 
-//Easier way in C++ with recursion
+//Easier way with recursion
 import java.util.*;
 
 public class Main {
