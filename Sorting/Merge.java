@@ -2,55 +2,51 @@ package Sorting;
 
 public class Merge {
 
-    public static int[] merge(int[] arr1, int[] arr2){
-        int res[] = new int[arr1.length+arr2.length];
-        int i=0,j=0,count=0;
-        while(i<arr1.length && j<arr2.length){
-            if(arr1[i]<=arr2[j]){
-                res[count++] = arr1[i++];
-            }
-            else{
-                res[count++] = arr2[j++];
+    public static void merge(int[] arr,int l, int mid, int r){
+        int idx = mid+1;
+        int[] temp = new int[r-l+1];
+        int cnt = 0;
+        int left = l;
+        while(left<=mid && idx<=r){
+            if(arr[left]<=arr[idx]){
+                temp[cnt] = arr[left];
+                left++;
+                cnt++;
+            }else{
+                temp[cnt] = arr[idx];
+                idx++;
+                cnt++;
             }
         }
 
-        while(i>=0 && i<arr1.length){
-            res[count++]=arr1[i++];
+        while(left<=mid){
+            temp[cnt++] = arr[left++];
         }
-        while (j>=0 && j<arr2.length) {
-            res[count++] = arr2[j++];
+        while(idx<=r){
+            temp[cnt++] = arr[idx++];
         }
-        return res;
+        for(int i=l;i<=r;i++){
+            arr[i] = temp[i-l];
+        }
     }
 
-    public static int[] mergeSort(int[] splt){
-        if(splt.length <= 1){
-            return splt;
-        }
-        int mid = splt.length / 2;
-        int[] left = new int[mid];
-        int[] right = new int[splt.length - mid];
+    public static void mergeSort(int[] arr, int l, int r){
 
-        for (int i = 0; i < mid; i++) {
-            left[i] = splt[i];
-        }
+        if(l>=r) return;
 
-        for (int i = mid; i < splt.length; i++) {
-            right[i - mid] = splt[i];
-        }
-        left = mergeSort(left);
-        right = mergeSort(right);
-        return merge(left, right);
-
+        int mid = (l+r)/2;
+        mergeSort(arr, l, mid);
+        mergeSort(arr, mid+1, r);
+        merge(arr,l,mid,r);
     }
 
     public static void main(String[] args){
 
         int arr1[] = new int[]{10,2,67,34,7};
-        int res[] = mergeSort(arr1);
+        mergeSort(arr1,0,arr1.length-1);
         
         
-        for(int k:res) System.out.print(k+" ");
+        for(int k:arr1) System.out.print(k+" ");
 
     }
 }

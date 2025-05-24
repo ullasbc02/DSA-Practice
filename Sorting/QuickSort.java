@@ -10,18 +10,24 @@ public class QuickSort {
     }
 
     public static int Partition(int arr[], int left, int right){
+        
         int pivot = arr[left];
+
         int i = left;
         int j = right;
+
         while(i<j){
-            while(arr[i]<=pivot && i<=right-1) i++;
-            while(arr[j]>pivot && j>=left) j--;
+
+            while(i<=right && pivot>=arr[i]) i++;
+            while(pivot<arr[j] && j>left) j--;
+
             if(i<j){
                 Swap(arr, i, j);
             }
         }
-        Swap(arr,j,left);
+        Swap(arr,left,j);
         return j;
+
     }
 
     public static void Quicksort(int arr[], int left, int right){
